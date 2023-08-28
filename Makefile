@@ -1,9 +1,10 @@
+bin_dir = $(shell if [ -d "./bin/" ] ; then echo "bin/" ; else mkdir "bin/" && echo "bin/" ; fi)
 cat: cat.c cat.lua
-	gcc -o cat cat.c -llua
+	gcc -o ${bin_dir}cat cat.c -llua
 echo: echo.c echo.lua
-	gcc -o echo echo.c -llua
+	gcc -o ${bin_dir}echo echo.c -llua
 
 .PHONEY: clean
 clean:
-	rm cat echo
+	rm -rf ${bin_dir}
 
